@@ -21,4 +21,13 @@
     <definition name="add_prod" extends="layout.basic">
         <put-attribute name="body" value="/WEB-INF/views/add_prod.jsp"/>
     </definition>
+
+    <definition name="add_user" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/views/add_user.jsp"/>
+    </definition>
+
+    <definition name="all_prod" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/views/all_prod.jsp"/>
+    </definition>
+
 </tiles-definitions>

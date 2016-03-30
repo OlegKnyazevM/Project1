@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,10 +54,10 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/getAll" , method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity getAllProducts(){
+     public String getAllProducts(Model model){
         List<Product> products = productService.getAllProduct();
-        return new ResponseEntity(products , HttpStatus.OK);
+        model.addAttribute("products", products);
+        return "all_prod";
     }
 
     @RequestMapping(value = "findById/{id}", method = RequestMethod.GET)

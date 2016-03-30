@@ -144,9 +144,9 @@
 
     <ul id="menu">
         <li><a class="sel" href="#"><span></span>user</a></li>
-        <li><a href="#"><span></span>admin</a></li>
+        <li><a href="/WEB-INF/views/add_user.jsp"><span></span>admin</a></li>
         <li><a href="#"><span></span>shop</a></li>
-        <li><a href="#"><span></span>shoping card</a></li>
+        <li><a href="#"><span></span>shoping cart</a></li>
 
     </ul>
 

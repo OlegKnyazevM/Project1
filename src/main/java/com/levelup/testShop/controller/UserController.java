@@ -21,15 +21,28 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/add" , method = RequestMethod.POST , headers = { "Content-type=application/json;charset=UTF-8"
-    })
-    @ResponseBody
-    public ResponseEntity saveUser(@RequestBody UserDto userDto){
+//    @RequestMapping(value = "/add" , method = RequestMethod.POST , headers = { "Content-type=application/json;charset=UTF-8"
+//    })
+//    @ResponseBody
+//    public ResponseEntity saveUser(@RequestBody UserDto userDto){
+//        User user = new User();
+//        user.setEmail(userDto.getEmail());
+//        user.setPass(userDto.getPass());
+//        userService.saveUser(user);
+//        return new ResponseEntity(user, HttpStatus.OK);
+//    }
+@RequestMapping(value = "/add", method = RequestMethod.GET)
+public String showProdForm(){
+    return "add_user";
+}
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute UserDto userDto){
         User user = new User();
         user.setEmail(userDto.getEmail());
         user.setPass(userDto.getPass());
         userService.saveUser(user);
-        return new ResponseEntity(user, HttpStatus.OK);
+        return "greeting";
     }
 
     @RequestMapping(value = "/getAll" , method = RequestMethod.GET)

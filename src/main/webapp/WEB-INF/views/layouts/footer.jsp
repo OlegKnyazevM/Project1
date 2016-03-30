@@ -51,7 +51,7 @@ Copyright © Paletton.com;
 |
 <a href="#">shop</a>
 |
-<a href="#">shoping card</a>
+<a href="#">shoping cart</a>
 </div>
 </body>
 </html>
