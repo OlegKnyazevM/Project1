@@ -32,7 +32,7 @@ public class UserController {
 //        return new ResponseEntity(user, HttpStatus.OK);
 //    }
 @RequestMapping(value = "/add", method = RequestMethod.GET)
-public String showProdForm(){
+public String showUserForm(){
     return "add_user";
 }
 

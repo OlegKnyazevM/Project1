@@ -79,7 +79,7 @@
             padding: 24px 0;
             list-style-type: none;
             height: 2px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid green;
         }
         ul, menu, dir {
             display: block;
@@ -115,8 +115,8 @@
             text-decoration: none;
             text-transform: uppercase;
             text-align: center;
-            background: gray;
-            color: white;
+            background:#baeb9b ;
+            color: black;
         }
         a:-webkit-any-link {
             color: -webkit-link;
