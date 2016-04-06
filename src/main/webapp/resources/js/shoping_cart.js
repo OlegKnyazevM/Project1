@@ -1,16 +1,18 @@
 $(document).ready(function(){
 
-    $(".add2card").on('click',function(){
+    $('.add2cart').on('click',function(){
+        alert("DDDDD");
         var prodId = $(this).data('product-id');
         $.ajax({
-            url: "/cart/product/" + prodId,
+            url: "/cart/" + prodId,
             dataType: "JSON",
             type: "GET",
-            success: function(msg){
-                alert( "Добавлено: " + msg );
+            success: function(response){
+                $('#cartQuantity').html(response.quantity);
+                $('#cartCost').html(response.cost);
+                
             }
         });
-
 
     });
 });

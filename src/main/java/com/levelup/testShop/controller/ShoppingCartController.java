@@ -1,8 +1,8 @@
 package com.levelup.testShop.controller;
 
 import com.levelup.testShop.model.Product;
-import com.levelup.testShop.model.ShoppingCart;
 import com.levelup.testShop.model.ShoppingCartItem;
+import com.levelup.testShop.model.ShoppingCartSecond;
 import com.levelup.testShop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -29,32 +29,28 @@ public class ShoppingCartController {
 
     @Autowired
     private HttpSession httpSession;
+    @Autowired
     private ProductService productService;
 
 
-    @RequestMapping(value = "/product/{id_prod}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/{id_prod}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public ResponseEntity showCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
+    public ResponseEntity<ShoppingCartSecond> addCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
         Product productCart = productService.findById(id_prod);
-        ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
-        shoppingCartItem.setQuantity(shoppingCartItem.getQuantity());
-        shoppingCartItem.setProduct(productCart);
+        ShoppingCartItem item= new ShoppingCartItem();
+        item.setQuantity(2);
+        item.setProduct(productCart);
+
         httpSession = httpServletRequest.getSession(true);
-        httpSession.setAttribute("cart", shoppingCartItem);
-        ShoppingCart cart = (ShoppingCart) httpSession.getAttribute("cart");
-//        if (cart != null) {
-//            cart.addItem(shoppingCartItem);
-//            httpSession.setAttribute("cart", cart);
-////            cart = (ShoppingCart) httpSession.getAttribute("cart");
-//        } else {
-//            cart = new ShoppingCart();
-//        }
+        ShoppingCartSecond cart;
+        cart = (ShoppingCartSecond) httpSession.getAttribute("cart");
+
         if (cart == null) {
-            cart = new ShoppingCart();
-            cart.addCart(shoppingCartItem);
+            cart = new ShoppingCartSecond();
+            cart.addItem(item);
             httpSession.setAttribute("cart", cart);
         } else {
-            cart.addCart(shoppingCartItem);
+            cart.addItem(item);
             httpSession.setAttribute("cart", cart);
         }
         model.addAttribute("totalAmount", cart.getTotalAmount());
