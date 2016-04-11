@@ -7,8 +7,22 @@
 <%@ page session="false" %>
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="/resources/js/shoping_cart.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/shoppingCart.css">
+
 
 <div class=" body">
+
+    <div class="right">
+        <div id="shoppingCart">
+            <ul>
+                <li>Quantity : <span id="totalAmount">0</span></li>
+                <li>TotalCost : <span id="totalCost">0</span></li>
+
+            </ul>
+
+        </div>
+
+    </div>
     <div class="left">
         <c:forEach var="product" items="${products}">
             <table border="0">
@@ -33,15 +47,6 @@
                 </tr>
             </table>
         </c:forEach>
-    </div>
-    <div class="right">
-        <div id="item">
-            <ul>
-                <li>Quantity : <span id="cartQuantity">0</span></li>
-                <li>TotalCost : <span id="cartCost">0</span></li>
-            </ul>
-        </div>
-
     </div>
 </div>
 

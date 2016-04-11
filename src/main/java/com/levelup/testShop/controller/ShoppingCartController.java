@@ -1,8 +1,9 @@
 package com.levelup.testShop.controller;
 
 import com.levelup.testShop.model.Product;
+import com.levelup.testShop.model.ShoppingCart;
 import com.levelup.testShop.model.ShoppingCartItem;
-import com.levelup.testShop.model.ShoppingCartSecond;
+//import com.levelup.testShop.model.ShoppingCartSecond;
 import com.levelup.testShop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -21,40 +22,83 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by java on 30.03.2016.
  */
-@Controller
+//@Controller
+//@Scope(value = "session")
+//@RequestMapping("/cart")
+//public class ShoppingCartController {
+//
+//
+//    @Autowired
+//    private HttpSession httpSession;
+//    @Autowired
+//    private ProductService productService;
+//
+//
+//    @RequestMapping(value = "/{id_prod}", method = RequestMethod.GET, produces = "application/json")
+//    @ResponseBody
+//    public ResponseEntity<ShoppingCartSecond> addCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
+//        Product productCart = productService.findById(id_prod);
+//        ShoppingCartItem item= new ShoppingCartItem();
+//        item.setQuantity(2);
+//        item.setProduct(productCart);
+//
+//        httpSession = httpServletRequest.getSession(true);
+//        ShoppingCartSecond cart;
+//        cart = (ShoppingCartSecond) httpSession.getAttribute("cart");
+//
+//        if (cart == null) {
+//            cart = new ShoppingCartSecond();
+//            cart.addItem(item);
+//            httpSession.setAttribute("cart", cart);
+//        } else {
+//            cart.addItem(item);
+//            httpSession.setAttribute("cart", cart);
+//        }
+//        model.addAttribute("totalAmount", cart.getTotalAmount());
+//        model.addAttribute("totalCost",  cart.getTotalCost());
+//        return new ResponseEntity(model, HttpStatus.OK);
+//    }
+//}
+
+@Controller // было @Component
 @Scope(value = "session")
-@RequestMapping("/cart")
+@RequestMapping("/cart") // то, что добавится к урлу localhost:8080/cart/
 public class ShoppingCartController {
-
-
     @Autowired
     private HttpSession httpSession;
     @Autowired
     private ProductService productService;
 
-
-    @RequestMapping(value = "/{id_prod}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "showCart", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<ShoppingCartSecond> addCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
-        Product productCart = productService.findById(id_prod);
-        ShoppingCartItem item= new ShoppingCartItem();
-        item.setQuantity(2);
-        item.setProduct(productCart);
-
+    public ResponseEntity<ShoppingCart> showCart(Model model, HttpServletRequest httpServletRequest) {
+        ShoppingCart shoppingCart;
+//        shoppingCart = new ShoppingCart();
         httpSession = httpServletRequest.getSession(true);
-        ShoppingCartSecond cart;
-        cart = (ShoppingCartSecond) httpSession.getAttribute("cart");
+        shoppingCart = (ShoppingCart) httpSession.getAttribute("cart");
+        return new ResponseEntity(shoppingCart.getShoppingCartItems(), HttpStatus.OK);
+    }
 
-        if (cart == null) {
-            cart = new ShoppingCartSecond();
-            cart.addItem(item);
-            httpSession.setAttribute("cart", cart);
-        } else {
-            cart.addItem(item);
-            httpSession.setAttribute("cart", cart);
+    @RequestMapping(value = "/product/{id_prod}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+//    public ResponseEntity addToCart(@PathVariable("id_prod") long id, Model model, HttpServletRequest httpServletRequest) {
+    public ResponseEntity showCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
+        Product product = productService.findById(id_prod);
+        ShoppingCart shoppingCart;
+        httpSession = httpServletRequest.getSession(true);
+//        shoppingCart = (ShoppingCart) httpServletRequest.getAttribute("cart"); //session! not servletRequest
+        shoppingCart = (ShoppingCart) httpSession.getAttribute("cart");
+        if (shoppingCart == null) {
+            shoppingCart = new ShoppingCart();
+
         }
-        model.addAttribute("totalAmount", cart.getTotalAmount());
-        model.addAttribute("totalCost",  cart.getTotalCost());
+        shoppingCart.addCartItem(product);
+//        httpServletRequest.setAttribute("cart", shoppingCart); // is not work :( shoppingCart isn't saved
+        httpSession.setAttribute("cart", shoppingCart); // it work property :)
+
+        model.addAttribute("totalAmount", shoppingCart.getTotalCartItemsQuantity());
+        model.addAttribute("totalCost", shoppingCart.getTotalCartCost());
+
         return new ResponseEntity(model, HttpStatus.OK);
     }
 }

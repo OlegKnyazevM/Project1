@@ -1,17 +1,18 @@
 $(document).ready(function(){
 
-    $('.add2cart').on('click',function(){
-        alert("DDDDD");
+    $('.add2cart').on("click",function(){
+        alert("dwaawda");
         var prodId = $(this).data('product-id');
         $.ajax({
-            url: "/cart/" + prodId,
-            dataType: "JSON",
-            type: "GET",
+            url: '/cart/product/' + prodId,
+            dataType: 'JSON',
+            type: 'GET',
             success: function(response){
-                $('#cartQuantity').html(response.quantity);
-                $('#cartCost').html(response.cost);
-                
+                $('#totalAmount').html(response.totalAmount);
+                $('#totalCost').html(response.totalCost);
+                alert( "Всего добавлено товаров: " + response.totalAmount + "   На сумму: " + response.totalCost);
             }
+
         });
 
     });
