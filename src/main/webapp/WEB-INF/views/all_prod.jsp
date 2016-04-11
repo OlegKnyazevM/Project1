@@ -17,6 +17,7 @@
             <ul>
                 <li>Quantity : <span id="totalAmount">0</span></li>
                 <li>TotalCost : <span id="totalCost">0</span></li>
+                <li>Last Added : <span id="productTitle">0</span> </li>
 
             </ul>
 

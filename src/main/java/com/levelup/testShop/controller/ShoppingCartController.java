@@ -98,6 +98,7 @@ public class ShoppingCartController {
 
         model.addAttribute("totalAmount", shoppingCart.getTotalCartItemsQuantity());
         model.addAttribute("totalCost", shoppingCart.getTotalCartCost());
+        model.addAttribute("productTitle",product.getTitle());
 
         return new ResponseEntity(model, HttpStatus.OK);
     }

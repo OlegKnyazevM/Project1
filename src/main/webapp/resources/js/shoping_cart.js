@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('.add2cart').on("click",function(){
-        alert("dwaawda");
+        // alert("dwaawda");
         var prodId = $(this).data('product-id');
         $.ajax({
             url: '/cart/product/' + prodId,
@@ -10,7 +10,8 @@ $(document).ready(function(){
             success: function(response){
                 $('#totalAmount').html(response.totalAmount);
                 $('#totalCost').html(response.totalCost);
-                alert( "Всего добавлено товаров: " + response.totalAmount + "   На сумму: " + response.totalCost);
+                $('#productTitle').html(response.productTitle);
+                // alert( "Всего добавлено товаров: " + response.totalAmount + "   На сумму: " + response.totalCost);
             }
 
         });
