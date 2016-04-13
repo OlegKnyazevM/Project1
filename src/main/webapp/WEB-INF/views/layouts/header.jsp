@@ -26,7 +26,7 @@
             padding-left: 160px;
 
         }
-        img{
+        .noPhoto{
             width: 150px;
             height: 100px;
             padding-left: 5px;
@@ -143,9 +143,9 @@
     <h1 text align="center">YOUR SHOP</h1>
 
     <ul id="menu">
-        <li><a class="sel" href="#"><span></span>user</a></li>
-        <li><a href="/WEB-INF/views/add_user.jsp"><span></span>admin</a></li>
-        <li><a href="#"><span></span>shop</a></li>
+        <li><a class="sel" href="/user/add" ><span></span>user</a></li>
+        <li><a href="/product/add"><span></span>admin</a></li>
+        <li><a href="/product/getAll"><span></span>shop</a></li>
         <li><a href="#"><span></span>shoping cart</a></li>
 
     </ul>

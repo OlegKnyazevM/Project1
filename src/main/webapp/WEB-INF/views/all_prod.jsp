@@ -15,10 +15,14 @@
     <div class="right">
         <div id="shoppingCart">
             <ul>
+                <h2 align="middle">Shopping cart</h2>
                 <li>Quantity : <span id="totalAmount">0</span></li>
                 <li>TotalCost : <span id="totalCost">0</span></li>
-                <li>Last Added : <span id="productTitle">0</span> </li>
-
+                <li>Last Added : <span id="productTitle">not added</span> </li>
+                <button id="shoppingCartBtn" href="#">
+                    <img src="/resources/img/ShoppingCart.png" width="70" height="70" alt="" style="vertical-align:middle"><br>
+                    <div>Go to Shopping cart</div>
+                </button>
             </ul>
 
         </div>
@@ -28,7 +32,7 @@
         <c:forEach var="product" items="${products}">
             <table border="0">
                 <tr>
-                    <td rowspan="4"><img src="/resources/img/noPhoto.jpg"></td>
+                    <td rowspan="4"><img src="/resources/img/noPhoto.jpg" class="noPhoto"></td>
                     <td>${product.title}</td>
                 </tr>
                 <tr>

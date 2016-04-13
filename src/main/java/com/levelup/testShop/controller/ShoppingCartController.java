@@ -69,7 +69,7 @@ public class ShoppingCartController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value = "showCart", method = RequestMethod.GET)
+    @RequestMapping(value = "/showCart", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<ShoppingCart> showCart(Model model, HttpServletRequest httpServletRequest) {
         ShoppingCart shoppingCart;
