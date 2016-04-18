@@ -19,7 +19,7 @@
                 <li>Quantity : <span id="totalAmount">0</span></li>
                 <li>TotalCost : <span id="totalCost">0</span></li>
                 <li>Last Added : <span id="productTitle">not added</span> </li>
-                <button id="shoppingCartBtn" href="#">
+                <button id="shoppingCartBtn" href="/cart/showCart">
                     <img src="/resources/img/ShoppingCart.png" width="70" height="70" alt="" style="vertical-align:middle"><br>
                     <div>Go to Shopping cart</div>
                 </button>

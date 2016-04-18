@@ -22,6 +22,11 @@
         <put-attribute name="body" value="/WEB-INF/views/add_prod.jsp"/>
     </definition>
 
+    <definition name="showCart" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/views/shopping_cart.jsp"/>
+    </definition>
+
+
     <definition name="add_user" extends="layout.basic">
         <put-attribute name="body" value="/WEB-INF/views/add_user.jsp"/>
     </definition>

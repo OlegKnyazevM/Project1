@@ -70,13 +70,13 @@ public class ShoppingCartController {
     private ProductService productService;
 
     @RequestMapping(value = "/showCart", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<ShoppingCart> showCart(Model model, HttpServletRequest httpServletRequest) {
+    public String showCart(Model model, HttpServletRequest httpServletRequest ){
         ShoppingCart shoppingCart;
 //        shoppingCart = new ShoppingCart();
         httpSession = httpServletRequest.getSession(true);
         shoppingCart = (ShoppingCart) httpSession.getAttribute("cart");
-        return new ResponseEntity(shoppingCart.getShoppingCartItems(), HttpStatus.OK);
+        model.addAttribute("items", shoppingCart.getShoppingCartItems());
+        return "showCart";
     }
 
     @RequestMapping(value = "/product/{id_prod}", method = RequestMethod.GET, produces = "application/json")
@@ -99,6 +99,7 @@ public class ShoppingCartController {
         model.addAttribute("totalAmount", shoppingCart.getTotalCartItemsQuantity());
         model.addAttribute("totalCost", shoppingCart.getTotalCartCost());
         model.addAttribute("productTitle",product.getTitle());
+//        model.addAttribute("addQuantity", shoppingCart.)
 
         return new ResponseEntity(model, HttpStatus.OK);
     }

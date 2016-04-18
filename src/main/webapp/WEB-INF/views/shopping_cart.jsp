@@ -11,42 +11,44 @@
 
 
 <div class=" body">
-
-    <div class="right">
-        <div id="shoppingCart">
-            <ul>
-                <h2 align="middle">Shopping cart</h2>
-                <li>Quantity : <span id="totalAmount">0</span></li>
-                <li>TotalCost : <span id="totalCost">0</span></li>
-                <li>Last Added : <span id="productTitle">0</span> </li>
-            </ul>
-
-        </div>
-
-    </div>
     <div class="left">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="item" items="${items}">
             <table border="0">
                 <tr>
-                    <td rowspan="4"><img src="/resources/img/noPhoto.jpg" class="noPhoto"></td>
-                    <td>${product.title}</td>
+                    <td rowspan="5"><img src="/resources/img/noPhoto.jpg" class="noPhoto"></td>
+                    <td>${item.product.title}</td>
                 </tr>
                 <tr>
-                    <td>Price: ${product.price}</td>
+                    <td>Price: ${item.product.price}</td>
                 </tr>
                 <tr>
-                    <td>Description: ${product.description}</td>
+                    <td>Description: ${item.product.description}</td>
+                </tr>
+                <tr>
+                    <td>Quantity : ${item.quantity}</td>
+                </tr>
+                <tr>
+                    <td>Product cost : ${item.totalItemPrice}</td>
                 </tr>
                 <tr>
                     <td>
-                        <input id="cart_btn_add" class="btn add2cart" type="button" value="Add position"
-                               data-product-id="${product.id} "/>
-                        <input id="cart_btn_dell" class="btn add2cart" type="button" value="Delete"
-                               data-product-id="${product.id} "/>
+                            <%--<input id="cart_btn_add" class="btn add2cart" type="button" value="Add position"--%>
+                            <%--data-product-id="${item} "/>--%>
+                            <%--<input id="cart_btn_dell" class="btn add2cart" type="button" value="Delete"--%>
+                            <%--data-product-id="${product.id} "/>--%>
+                        <div class="cart-amount">
+                            <a href="#" class="cart-amount-minus">
+                                <img src="/resources/img/minus.png" width="25" height="25" alt="up">
+                            </a>
+                            <input name="quantity" type="text" size="3" max="100" min="1" class="input-text cart-amount-input-text" value="1">
+                            <a href="#" class="cart-amount-plus">
+                                <img src="/resources/img/plus.png" width="25" height="25" alt="up">
+                            </a>
 
-                        <a href='${product.id}'>
-                            <input type="button" class="btnBody" value="View" data-product-id="${product.id}">
-                        </a>
+                            <td><a href='${product.id}'>
+                                <input type="button" class="btnBody" value="View" data-product-id="${product.id}">
+                            </a></td>
+                        </div>
                     </td>
                 </tr>
             </table>

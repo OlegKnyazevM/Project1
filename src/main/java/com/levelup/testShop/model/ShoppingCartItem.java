@@ -53,7 +53,7 @@ import java.math.BigDecimal;
 public class ShoppingCartItem {
     private Product product;
     private int quantity;
-    private BigDecimal totalPrice; //  = new BigDecimal(0);
+    private BigDecimal totalItemPrice; //  = new BigDecimal(0);
 
 
     public ShoppingCartItem() {
@@ -71,9 +71,13 @@ public class ShoppingCartItem {
     }
 
     public BigDecimal getShoppingCartItemPrice() {
-        totalPrice = new BigDecimal(quantity);
-        totalPrice = totalPrice.multiply(product.getPrice());
-        return totalPrice;
+        totalItemPrice = new BigDecimal(quantity);
+        totalItemPrice = totalItemPrice.multiply(product.getPrice());
+        return totalItemPrice;
+    }
+//this getter needs 4 jsp item.totalItemPrice value (no getter - error when renderring)
+    public BigDecimal getTotalItemPrice() {
+        return totalItemPrice;
     }
 
     public void add(int quantity) {

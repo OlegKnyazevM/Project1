@@ -146,7 +146,7 @@
         <li><a class="sel" href="/user/add" ><span></span>user</a></li>
         <li><a href="/product/add"><span></span>admin</a></li>
         <li><a href="/product/getAll"><span></span>shop</a></li>
-        <li><a href="#"><span></span>shoping cart</a></li>
+        <li><a href="/cart/showCart"><span></span>shoping cart</a></li>
 
     </ul>
 
