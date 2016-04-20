@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-    $('.add2cart').on("click",function(){
+    $('.add2cart').on("click",function(event){
+        event.preventDefault();
         // alert("dwaawda");
         var prodId = $(this).data('product-id');
         $.ajax({
@@ -8,6 +9,7 @@ $(document).ready(function(){
             dataType: 'JSON',
             type: 'GET',
             success: function(response){
+                $('#count').html(response.quantity);
                 $('#totalAmount').html(response.totalAmount);
                 $('#totalCost').html(response.totalCost);
                 $('#productTitle').html(response.productTitle);

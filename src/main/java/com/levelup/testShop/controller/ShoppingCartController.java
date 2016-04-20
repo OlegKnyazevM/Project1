@@ -82,7 +82,7 @@ public class ShoppingCartController {
     @RequestMapping(value = "/product/{id_prod}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
 //    public ResponseEntity addToCart(@PathVariable("id_prod") long id, Model model, HttpServletRequest httpServletRequest) {
-    public ResponseEntity showCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
+    public ResponseEntity addToCart(@PathVariable long id_prod, Model model, HttpServletRequest httpServletRequest) {
         Product product = productService.findById(id_prod);
         ShoppingCart shoppingCart;
         httpSession = httpServletRequest.getSession(true);
