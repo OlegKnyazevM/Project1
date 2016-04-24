@@ -6,7 +6,7 @@
     <title>header</title>
     <style>
         #header {
-            position: absolute;
+            position: static;
             width: 100%;
             height: 130px;
             background: #fffaa8;
@@ -15,9 +15,9 @@
 
         h1 {
             display: block;
-            font-size: 2em;
-            -webkit-margin-before: 0.75em;
-            -webkit-margin-after: 0.67em;
+            font-size: 3em;
+            -webkit-margin-before: -0.25em;
+            -webkit-margin-after: 0.4em;
             -webkit-margin-start: 50px;
             -webkit-margin-end: 50px;
             font-weight: bold;
@@ -59,7 +59,7 @@
         }
         body{
              margin: 0;
-             padding: 170px;
+             padding: 100px;
              background: #e0e0e0;
              color: #333;
              font: 12px/1.5 'segoe ui', 'lucida sans unicode', 'lucida grande', lucida, sans-serif;

@@ -38,12 +38,12 @@
                             <%--data-product-id="${product.id} "/>--%>
 
                         <div class="cart-amount" >
-                            <a href="${product.id}" type="button" class="btn add2cart" data-product-id="${item.product.id}">
+                            <a href="#" class="cart-amount-plus">
                                 <img src="/resources/img/minus.png" width="25" height="25">
                             </a>
                             <input name="quantity" type="text" id="count" size="3" max="100" min="1"
                                    class="input-text cart-amount-input-text" value="${item.quantity}">
-                            <a href="#" class="cart-amount-plus">
+                            <a href="${product.id}" type="button" class="btn add2cart" data-product-id="${item.product.id}">
                                 <img src="/resources/img/plus.png" width="25" height="25">
                             </a>
                         </div>

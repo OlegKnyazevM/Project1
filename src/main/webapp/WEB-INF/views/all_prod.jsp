@@ -13,8 +13,8 @@
 <div class=" body">
 
     <div class="right">
-        <div id="shoppingCart">
-            <ul>
+        <div id="shoppingCartRight">
+            <ul >
                 <h2 align="middle">Shopping cart</h2>
                 <li>Quantity : <span id="totalAmount">0</span></li>
                 <li>TotalCost : <span id="totalCost">0</span></li>
@@ -29,7 +29,7 @@
         </div>
 
     </div>
-    <div class="left">
+    <div class="left" id="shoppingCartLeft">
         <c:forEach var="product" items="${products}">
             <table border="0">
                 <tr>
