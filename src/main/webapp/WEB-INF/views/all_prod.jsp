@@ -8,11 +8,20 @@
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="/resources/js/shoping_cart.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/shoppingCart.css">
+<script src="/resources/js/sorted_products.js"></script>
 
 
 <div class=" body">
 
     <div class="right">
+        <div>
+            <span>Сортировать по :</span>
+            <select class="#"   id="sorted" >
+                <option value="title">названию</option>
+                <option value="sort_incr">цене(возрастание)</option>
+                <option value="sort_decr">цена(убывание)</option>
+            </select>
+        </div>
         <div id="shoppingCartRight">
             <ul >
                 <h2 align="middle">Shopping cart</h2>

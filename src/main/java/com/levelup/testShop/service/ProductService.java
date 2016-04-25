@@ -14,5 +14,7 @@ public interface ProductService {
         public List<Product> getAllProduct();
         public void deleteProduct(long id);
         public boolean isExist(long id);
+        public List<Product> sortByName();
+        public List<Product> sortByPrice();
 
 }

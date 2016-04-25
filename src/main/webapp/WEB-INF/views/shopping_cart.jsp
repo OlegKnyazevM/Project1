@@ -12,6 +12,7 @@
 
 <div class=" body">
     <div class="left">
+
         <c:forEach var="item" items="${items}">
             <table border="0">
                 <tr>

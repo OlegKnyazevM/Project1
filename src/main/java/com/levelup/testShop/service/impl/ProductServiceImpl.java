@@ -51,4 +51,14 @@ public class ProductServiceImpl implements ProductService {
     public boolean isExist(long id) {
         return productRepository.isExist(id);
     }
+
+    @Override
+    public List<Product> sortByPrice() {
+        return productRepository.sortByPrice();
+    }
+
+    @Override
+    public List<Product> sortByName() {
+        return productRepository.sortByName();
+    }
 }

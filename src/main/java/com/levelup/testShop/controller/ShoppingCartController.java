@@ -102,5 +102,7 @@ public class ShoppingCartController {
 //        model.addAttribute("addQuantity", shoppingCart.)
 
         return new ResponseEntity(model, HttpStatus.OK);
+
+
     }
 }

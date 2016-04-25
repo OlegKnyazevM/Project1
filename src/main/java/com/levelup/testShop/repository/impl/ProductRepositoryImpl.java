@@ -30,7 +30,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public void updateProduct(Product product) {
-        if(product == null){
+        if (product == null) {
             throw new IllegalArgumentException("Product can not be null!");
         }
         entityManager.merge(product);
@@ -38,22 +38,37 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product findById(long id) {
-            return entityManager.find(Product.class , id);
-        }
+        return entityManager.find(Product.class, id);
+    }
+
+
     @Override
     public List<Product> getAllProduct() {
         Query query = entityManager.createQuery("FROM Product");
-        return (List<Product>)query.getResultList();
+        return (List<Product>) query.getResultList();
     }
 
     @Override
     public void deleteProduct(long id) {
-            entityManager.remove(entityManager.find(Product.class , id));
-        }
+        entityManager.remove(entityManager.find(Product.class, id));
+    }
 
     @Override
     public boolean isExist(long id) {
-            return entityManager.find(Product.class, id) != null;
-        }
+        return entityManager.find(Product.class, id) != null;
+    }
+
+    @Override
+    public List<Product> sortByName() {
+        Query query=entityManager.createQuery("FROM Product ORDER BY product_title");
+        return ( List<Product>) query.getResultList();
+
+    }
+
+    @Override
+    public List<Product> sortByPrice() {
+        Query query=entityManager.createQuery("FROM Product ORDER BY product_price");
+        return ( List<Product>) query.getResultList();
+    }
 }
 

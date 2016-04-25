@@ -10,7 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * Created by java on 21.03.2016.
@@ -36,12 +37,12 @@ public class ProductController {
 //        return new ResponseEntity(product , HttpStatus.OK);
 //    }
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showProdForm(){
+    public String showProdForm() {
         return "add_prod";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute ProductDto productDto){
+    public String saveProduct(@ModelAttribute ProductDto productDto) {
         Product product = new Product();
 //        if (product != null){
 //            return "Product exist";
@@ -53,9 +54,38 @@ public class ProductController {
         return "greeting";
     }
 
-    @RequestMapping(value = "/getAll" , method = RequestMethod.GET)
-     public String getAllProducts(Model model){
-        List<Product> products = productService.getAllProduct();
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    public String getAllProducts(Model model, HttpServletRequest request) {
+        // method, don't have sorted
+//
+// List<Product> products = productService.getAllProduct();
+//        model.addAttribute("products", products);
+//        return "all_prod";
+
+//    Method, have sorted
+
+        String param = request.getParameter("sort");
+        ArrayList<String> sorts = new ArrayList<String>(Arrays.asList("title", "sort_incr", "sort_decr"));
+        if (!sorts.contains(param)) {
+            param = "title";
+        }
+
+        List<Product> products = null;
+
+        if (param.equals("title")) {
+            products = productService.sortByName();
+        }
+
+        if (param.equals("sort_incr")) {
+            products = productService.sortByPrice();
+        }
+
+        if (param.equals("sort_decr")) {
+            products = productService.sortByPrice();
+            Collections.reverse(products);
+        }
+
         model.addAttribute("products", products);
         return "all_prod";
     }
@@ -69,8 +99,8 @@ public class ProductController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity deleteProduct(@PathVariable Long id){
-        if(id == null){
+    public ResponseEntity deleteProduct(@PathVariable Long id) {
+        if (id == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         productService.deleteProduct(id);

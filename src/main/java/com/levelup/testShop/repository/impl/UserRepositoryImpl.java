@@ -59,5 +59,7 @@ public class UserRepositoryImpl implements UserRepository {
     public boolean isExist(long id) {
         return entityManager.find(User.class, id) != null;
     }
+
+
 }
 
