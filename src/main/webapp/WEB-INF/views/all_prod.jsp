@@ -16,21 +16,22 @@
     <div class="right">
         <div>
             <span>Сортировать по :</span>
-            <select class="#"   id="sorted" >
+            <select class="#" id="sorted">
                 <option value="title">названию</option>
                 <option value="sort_incr">цене(возрастание)</option>
                 <option value="sort_decr">цена(убывание)</option>
             </select>
         </div>
         <div id="shoppingCartRight">
-            <ul >
+            <ul>
                 <h2 align="middle">Shopping cart</h2>
                 <li>Quantity : <span id="totalAmount">0</span></li>
                 <li>TotalCost : <span id="totalCost">0</span></li>
-                <li>Last Added : <span id="productTitle">not added</span> </li>
+                <li>Last Added : <span id="productTitle">not added</span></li>
                 <%--<button id="shoppingCartBtn" href="">--%>
-                    <button id="shoppingCartBtn" onclick="javascript:window.location='/cart/showCart'">
-                    <img src="/resources/img/ShoppingCart.png" width="70" height="70" alt="" style="vertical-align:middle"><br>
+                <button id="shoppingCartBtn" onclick="javascript:window.location='/cart/showCart'">
+                    <img src="/resources/img/ShoppingCart.png" width="70" height="70" alt=""
+                         style="vertical-align:middle"><br>
                     <div>Go to Shopping cart</div>
                 </button>
             </ul>
@@ -42,22 +43,26 @@
         <c:forEach var="product" items="${products}">
             <table border="0">
                 <tr>
-                    <td rowspan="4"><img src="/resources/img/noPhoto.jpg" class="noPhoto"></td>
-                    <td>${product.title}</td>
-                </tr>
-                <tr>
-                    <td>Price: ${product.price}</td>
-                </tr>
-                <tr>
-                    <td>Description: ${product.description}</td>
-                </tr>
-                <tr>
                     <td>
-                        <input id="cart_btn" class="btn add2cart" type="button" value="Add to cart"
-                               data-product-id="${product.id} "/>
-                        <a href='${product.id}'>
-                            <input type="button" class="btnBody" value="View" data-product-id="${product.id}">
-                        </a>
+                        <tr>
+                            <td rowspan="4"><img src="/resources/img/noPhoto.jpg" class="noPhoto"></td>
+                            <td>${product.title}</td>
+                        </tr>
+                        <tr>
+                            <td>Price: ${product.price}</td>
+                        </tr>
+                        <tr>
+                            <td>Description: ${product.description}</td>
+                        </tr>
+                        <tr>
+                             <td>
+                                <input id="cart_btn" class="btn add2cart" type="button" value="Add to cart"
+                                       data-product-id="${product.id} "/>
+                                <a href='${product.id}'>
+                                    <input type="button" class="btnBody" value="View" data-product-id="${product.id}">
+                                </a>
+                            </td>
+                        </tr>
                     </td>
                 </tr>
             </table>
@@ -66,22 +71,22 @@
 </div>
 
 <%--<script>--%>
-    <%--$(document).ready(function(){--%>
+<%--$(document).ready(function(){--%>
 
-        <%--$('.add2cart').on('click',function(){--%>
-            <%--alert("DDDDD");--%>
-            <%--var prodId = $(this).data('product-id');--%>
-            <%--$.ajax({--%>
-                <%--url: "/cart/" + prodId,--%>
-                <%--dataType: "JSON",--%>
-                <%--type: "GET",--%>
-                <%--success: function(response){--%>
-                    <%--$('#cartQuantity').html(response.quantity);--%>
-                    <%--$('#cartCost').html(response.cost);--%>
+<%--$('.add2cart').on('click',function(){--%>
+<%--alert("DDDDD");--%>
+<%--var prodId = $(this).data('product-id');--%>
+<%--$.ajax({--%>
+<%--url: "/cart/" + prodId,--%>
+<%--dataType: "JSON",--%>
+<%--type: "GET",--%>
+<%--success: function(response){--%>
+<%--$('#cartQuantity').html(response.quantity);--%>
+<%--$('#cartCost').html(response.cost);--%>
 
-                <%--}--%>
-            <%--});--%>
+<%--}--%>
+<%--});--%>
 
-        <%--});--%>
-    <%--});--%>
+<%--});--%>
+<%--});--%>
 <%--</script>--%>

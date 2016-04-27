@@ -143,6 +143,10 @@ public class ShoppingCart {
         return currentShoppingCartItem;
     }
 
+    public void deleteCartItem(Product product) {
+        shoppingCartItemHashMap.remove(product.getId());
+    }
+
     private BigDecimal calculateTotalCost() {
         totalCartCost = new BigDecimal(0);
 //        for (HashMap<Long, ShoppingCartItem> items: shoppingCartItemHashMap.values())  {
